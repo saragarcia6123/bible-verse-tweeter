@@ -51,7 +51,7 @@ def get_random_verse():
         try:
             verse_id = chapter_id + "." + str(verse_num)
             verse_data = get_verse(verse_id)
-            verse_text = verse_data['content'].strip().replace(":", ".")
+            verse_text = verse_data['content']
             
             if reference == "":
                 reference = verse_data['reference']
@@ -65,4 +65,5 @@ def get_random_verse():
         if verse_num > len(verses)-1 or i > 3:
             break
     
+    verse_content = verse_content.replace("¶ ", "").replace(":", ".").strip()
     return f'"{verse_content}" - {reference}'
